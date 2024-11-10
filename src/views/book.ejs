@@ -1,0 +1,51 @@
+<div class="flex-wrap gap-normal book-identifiers">
+    <h2><%= book.title %></h2>
+    <span class="text-light">#<%= id %></span>
+</div>
+<div class="container container-shadow flex-wrap gap-normal container-book" data-id="<%= id %>">
+    <div class="book-thumbnail default-thumbnail">
+        <i class="fa-solid fa-book"></i>
+    </div>
+    <p>
+        <%= book.description %><br><br>
+        Written by: <%= book.authors.join(', ') %>.<br>
+        Released at: <%= book.releaseDate %>
+    </p>
+</div>
+<div class="flex-wrap gap-normal">
+    <div class="container container-shadow flex-column flex-center book-status manage-item">
+        <% if (book.status === 'IN_STOCK') { %>
+            <span class="text-bold">In stock</span>
+        <% } else if (book.status === 'NOT_AVAILABLE') { %>
+            <span class="text-bold">Not available</span>
+            <span class="text-light"><%= book.givenTo %> / <%= book.returnDate %></span>
+        <% } %>
+    </div>
+    <% if (book.status === 'IN_STOCK') { %>
+        <button type="button" class="btn-primary manage-item" name="give" onclick="window.bookGiveDialog.showModal()">Give</button>
+    <% } else { %>
+        <button type="button" class="btn-primary manage-item btn-need-confirm" name="return">Return</button>
+    <% } %>
+    <button type="button" class="btn-secondary manage-item" name="edit" onclick="openDialogEdit()"><i class="fa-solid fa-pen-to-square"></i>&nbsp;Edit</button>
+    <button type="button" class="btn-secondary btn-need-confirm manage-item" name="delete"><i class="fa-solid fa-trash"></i>&nbsp;Delete</button>
+</div>
+
+<%- include('partials/book_manage') %>
+
+<dialog id="bookGiveDialog" class="container container-shadow dialog-give gap-normal" aria-label="Give book">
+    <h2 class="text-center">Give book</h2>
+    <form id="bookGiveForm" class="flex-column gap-normal">
+        <div class="flex-column gap-small">
+            <label for="book-given-to" class="text-bold font-size-small">Given to</label>
+            <input id="book-given-to" name="givenTo" type="text" placeholder="Given to" required autocomplete="on">
+        </div>
+        <div class="flex-column gap-small">
+            <label for="book-return-date" class="text-bold font-size-small">Return date</label>
+            <input id="book-return-date" name="returnDate" type="date" placeholder="Return date" required>
+        </div>
+        <div class="flex-center flex-wrap gap-normal">
+            <button class="btn-primary" type="submit" name="confirm">Confirm</button>
+            <button class="btn-secondary" type="button" onclick="window.bookGiveDialog.close()" name="cancel">Cancel</button>
+        </div>
+    </form>
+</dialog>

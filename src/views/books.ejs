@@ -1,0 +1,23 @@
+<div class="container container-shadow container-search">
+    <form id="searchForm" class="gap-normal">
+        <label for="searchQuery">Search</label>
+        <input id="searchQuery" name="query" placeholder="Search" type="search">
+        <label for="orderBy">Order by</label>
+        <select id="orderBy" name="order_by">
+            <option value="">No order</option>
+            <option value="return_asc">Return date ascending</option>
+            <option value="return_desc">Return date descending</option>
+        </select>
+        <div>
+            <input id="inStock" name="in_stock" type="checkbox">
+            <label for="inStock">In stock</label>
+        </div>
+    </form>
+    <button type="button" name="add" onclick="openDialogAdd()" class="btn-primary btn-round"><i class="fa-solid fa-plus"></i></button>
+</div>
+
+<div id="booksContainer" class="flex-column gap-large">
+    <%- include('partials/books_card', { books: books }) %>
+</div>
+
+<%- include('partials/book_manage') %>

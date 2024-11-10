@@ -1,0 +1,57 @@
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.container-search {
+    display: inline-flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 10px 0;
+}
+
+.container-search form {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 90%;
+}
+
+.container-search form input[type=search] {
+    min-width: 50%;
+}
+
+label[for="searchQuery"], label[for="orderBy"] {
+    display: none;
+}
+
+.container-book {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.book-thumbnail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.default-thumbnail {
+    height: 60px;
+    width: 40px;
+    padding: 20px;
+    background-color: #D9D9D9;
+}
+
+.book-status {
+    padding: 10px;
+    min-width: 10%;
+}
+
+.dialog-manage {
+    width: 70%;
+    max-width: 400px;
+}

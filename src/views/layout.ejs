@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Barcode+128+Text&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap">
+    <link rel="stylesheet" href="/fontawesome/css/fontawesome.css">
+    <link rel="stylesheet" href="/fontawesome/css/solid.css">
+    <link rel="stylesheet" href="/stylesheets/global.css">
+    <link rel="stylesheet" href="/stylesheets/header.css">
+    <% if (customStyles && customStyles.length > 0) { %>
+        <% for (let i = 0; i < customStyles.length; i++) { %>
+            <link rel="stylesheet" href="/stylesheets/<%= customStyles[i] %>.css">
+        <% } %>
+    <% } %>
+</head>
+<body>
+<%- include('partials/header') %>
+<main>
+    <%- body %>
+    <dialog id="confirmDialog" class="container container-shadow dialog-confirm gap-normal" aria-label="Confirm action">
+        <p id="messageDialog" class="text-center">Are you sure?</p>
+        <div class="flex-center flex-wrap gap-normal mt10px">
+            <button id="confirmButton" class="btn-primary">Confirm</button>
+            <button class="btn-secondary" onclick="window.confirmDialog.close()">Cancel</button>
+        </div>
+    </dialog>
+</main>
+<% if (customScripts && customScripts.length > 0) { %>
+    <% for (let i = 0; i < customScripts.length; i++) { %>
+        <script src="/javascripts/<%= customScripts[i] %>.js"></script>
+    <% } %>
+<% } %>
+</body>
+</html>

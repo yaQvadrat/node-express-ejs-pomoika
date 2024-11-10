@@ -1,0 +1,25 @@
+<dialog id="bookDialog" class="container container-shadow dialog-manage gap-normal" aria-label="Manage book">
+    <h2 id="titleDialog" class="text-center">Add new book</h2>
+    <form id="bookManageForm" class="flex-column gap-normal">
+        <div class="flex-column gap-small">
+            <label for="book-title" class="text-bold font-size-small">Title</label>
+            <input id="book-title" name="title" type="text" placeholder="Title" required autocomplete="on">
+        </div>
+        <div class="flex-column gap-small">
+            <label for="book-authors" class="text-bold font-size-small">Authors</label>
+            <input id="book-authors" name="authors" type="text" placeholder="Authors e.g if many <author1, author2, ...>" required autocomplete="on">
+        </div>
+        <div class="flex-column gap-small">
+            <label for="book-description" class="text-bold font-size-small">Description</label>
+            <input id="book-description" name="description" type="text" placeholder="Description" autocomplete="on">
+        </div>
+        <div class="flex-column gap-small">
+            <label for="book-release-date" class="text-bold font-size-small">Release date</label>
+            <input id="book-release-date" name="releaseDate" type="text" placeholder="Release date" required autocomplete="on">
+        </div>
+        <div class="flex-center flex-wrap gap-normal">
+            <button class="btn-primary" type="submit" name="confirm">Confirm</button>
+            <button class="btn-secondary" type="button" onclick="window.bookDialog.close()" name="cancel">Cancel</button>
+        </div>
+    </form>
+</dialog>

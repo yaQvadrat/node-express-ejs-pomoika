@@ -1,0 +1,29 @@
+<% books.forEach(([id, book]) => { %>
+    <% if (!book) { %>
+        <% return; %>
+    <% } %>
+    <div class="container container-shadow container-book gap-normal" data-id="<%= id %>">
+        <div class="flex-wrap w70 gap-normal">
+            <div class="book-thumbnail default-thumbnail">
+                <i class="fa-solid fa-book"></i>
+            </div>
+            <div class="flex-wrap flex-column w80">
+                <a href="/books/<%= id %>"><h2><%= book.title %></h2></a>
+                <p>Written by: <%= book.authors.join(', ') %></p>
+                <p>Released at: <%= book.releaseDate %></p>
+            </div>
+        </div>
+        <div class="container flex-center flex-column border-black-thin book-status">
+            <% if (book.status === 'IN_STOCK') { %>
+                <span class="text-bold">In stock</span>
+            <% } else if (book.status === 'NOT_AVAILABLE') { %>
+                <span class="text-bold">Not available</span>
+                <span class="text-light">until <%= book.returnDate %></span>
+            <% } %>
+        </div>
+        <div class="flex-wrap gap-normal">
+            <button type="button" name="edit" class="btn-secondary btn-round" onclick="openDialogEdit(<%= id %>)"><i class="fa-solid fa-pen-to-square"></i></button>
+            <button type="button" name="delete" class="btn-secondary btn-round btn-need-confirm"><i class="fa-solid fa-trash"></i></button>
+        </div>
+    </div>
+<% }); %>
